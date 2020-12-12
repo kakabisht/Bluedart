@@ -225,26 +225,6 @@ CONSTRAINT `FK_98` FOREIGN KEY `fkIdx_98` (`customerid`) REFERENCES `Customer` (
 
 -- Payment, type of payment and type of delivery
 
-DROP TABLE IF EXISTS `Payment`;
-
-CREATE TABLE IF NOT EXISTS `Payment`
-(
- `paymentid`           int NOT NULL ,
- `discount`            int NOT NULL ,
- `payment_verfication` varchar(45) NOT NULL ,
- `transferid`          int NOT NULL ,
- `paymenttypeid`       int NOT NULL ,
- `deliverytypeid`      int NOT NULL ,
-
-PRIMARY KEY (`paymentid`),
-KEY `fkIdx_101` (`transferid`),
-CONSTRAINT `FK_101` FOREIGN KEY `fkIdx_101` (`transferid`) REFERENCES `Transfer` (`transferid`),
-KEY `fkIdx_170` (`paymenttypeid`),
-CONSTRAINT `FK_170` FOREIGN KEY `fkIdx_170` (`paymenttypeid`) REFERENCES `Paymenttype` (`paymenttypeid`),
-KEY `fkIdx_173` (`deliverytypeid`),
-CONSTRAINT `FK_173` FOREIGN KEY `fkIdx_173` (`deliverytypeid`) REFERENCES `Deliverytype` (`deliverytypeid`)
-);
-
 
 DROP TABLE IF EXISTS `Paymenttype`;
 
@@ -268,6 +248,26 @@ PRIMARY KEY (`deliverytypeid`)
 );
 
 
+DROP TABLE IF EXISTS `Payment`;
+
+CREATE TABLE IF NOT EXISTS `Payment`
+(
+ `paymentid`           int NOT NULL ,
+ `discount`            int NOT NULL ,
+ `payment_verfication` varchar(45) NOT NULL ,
+ `transferid`          int NOT NULL ,
+ `paymenttypeid`       int NOT NULL ,
+ `deliverytypeid`      int NOT NULL ,
+
+PRIMARY KEY (`paymentid`),
+KEY `fkIdx_101` (`transferid`),
+CONSTRAINT `FK_101` FOREIGN KEY `fkIdx_101` (`transferid`) REFERENCES `Transfer` (`transferid`),
+KEY `fkIdx_170` (`paymenttypeid`),
+CONSTRAINT `FK_170` FOREIGN KEY `fkIdx_170` (`paymenttypeid`) REFERENCES `Paymenttype` (`paymenttypeid`),
+KEY `fkIdx_173` (`deliverytypeid`),
+CONSTRAINT `FK_173` FOREIGN KEY `fkIdx_173` (`deliverytypeid`) REFERENCES `Deliverytype` (`deliverytypeid`)
+);
+
 -- Tracking
 
 DROP TABLE IF EXISTS `Tracking`;
@@ -290,75 +290,4 @@ CONSTRAINT `FK_200` FOREIGN KEY `fkIdx_200` (`frombranchid`) REFERENCES `Branch`
 KEY `fkIdx_203` (`tobranchid`),
 CONSTRAINT `FK_203` FOREIGN KEY `fkIdx_203` (`tobranchid`) REFERENCES `Branch` (`branchid`)
 );
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
- 
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
